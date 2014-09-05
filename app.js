@@ -26,8 +26,11 @@ var users = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
-app.set('view engine', 'jade');
+// Remove this below and replace with hogan engine
+// app.set('view engine', 'jade');
+app.set('view engine', 'hjs');
+app.engine('html', require('hogan-express'));
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
