@@ -33,6 +33,8 @@ app.set('view engine', 'hjs');
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
 
+// 
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));

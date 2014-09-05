@@ -13,6 +13,29 @@
 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/socket.io.js"></script>
-	
+	<script>
+		jQuery(function($){
+			//get our socket functionality 
+			var socket = io.connect();
+			// grab our message form
+			var $messageForm = $(#send-message);
+			// grab our message input
+			var $messageBox = $(#message);
+			// grab our chat div
+			var $chat = $(#chat);
+
+			//every time a message is submitted, we want to send our message to the server. Takes a function with an even at the parameter.
+			$messageForm.submit(function(e){
+				// Prevent the default behavior of refreshing the page aftr you submit.
+				e.preventDefault();
+				// send event to the server and use jquery to get the value of the message box
+				socket.emit('send message', $messageBox.val());
+				// clear the message box's value
+				$messageBox.val('');
+			});
+		});
+
+	</script>
+
 </body>
 </html>
