@@ -3,39 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chat Time!</title>
+	<link rel="stylesheet" href="/stylesheets/style.css" />
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+	<script src="/javascripts/services/socketio-service.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
+
+
+		<input size="20" type="text" id="name" placeholder="Your name"></input>
+
+
 	<div id="chat"></div>
 	<form id="send-message">
-		<input size="35" id="message"></input>
+		<input size="35" id="message" placeholder="Your message"></input>
 		<input type="submit"></input>
 	</form>
-
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="/socket.io.js"></script>
-	<script>
-		jQuery(function($){
-			//get our socket functionality 
-			var socket = io.connect();
-			// grab our message form
-			var $messageForm = $(#send-message);
-			// grab our message input
-			var $messageBox = $(#message);
-			// grab our chat div
-			var $chat = $(#chat);
-
-			//every time a message is submitted, we want to send our message to the server. Takes a function with an even at the parameter.
-			$messageForm.submit(function(e){
-				// Prevent the default behavior of refreshing the page aftr you submit.
-				e.preventDefault();
-				// send event to the server and use jquery to get the value of the message box
-				socket.emit('send message', $messageBox.val());
-				// clear the message box's value
-				$messageBox.val('');
-			});
-		});
-
-	</script>
 
 </body>
 </html>

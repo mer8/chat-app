@@ -9,5 +9,7 @@ a {
 
 #chat {
 	height: 500px;
+	width: 450px;
 	border: 4px solid lime;
+	overflow: auto;
 }
